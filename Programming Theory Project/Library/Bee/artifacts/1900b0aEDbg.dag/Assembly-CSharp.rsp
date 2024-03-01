@@ -356,8 +356,13 @@
 -analyzer:"C:/Users/esimon/Documents/Unity/2022.3.9f1/Editor/Data/Tools/Unity.SourceGenerators/Unity.Properties.SourceGenerator.dll"
 -analyzer:"C:/Users/esimon/Documents/Unity/2022.3.9f1/Editor/Data/Tools/Unity.SourceGenerators/Unity.SourceGenerators.dll"
 "Assets/Scripts/CameraFollowBall.cs"
+"Assets/Scripts/Counter.cs"
+"Assets/Scripts/LavaCollision.cs"
+"Assets/Scripts/MainManager.cs"
 "Assets/Scripts/MenuManager.cs"
 "Assets/Scripts/PlayerScript.cs"
+"Assets/Scripts/ScoreManager.cs"
+"Assets/Scripts/SpawnManager.cs"
 -langversion:9.0
 
 /deterministic
