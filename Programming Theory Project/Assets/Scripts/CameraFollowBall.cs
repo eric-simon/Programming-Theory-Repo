@@ -4,8 +4,11 @@ using UnityEngine;
 
 public class CameraFollowBall : MonoBehaviour
 {
-    public GameObject player;
-    public Vector3 myPos;
+    [SerializeField]
+    private GameObject player;
+
+    [SerializeField]
+    private Vector3 myPos;
 
     // Start is called before the first frame update
     void Start()

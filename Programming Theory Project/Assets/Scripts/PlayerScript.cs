@@ -5,20 +5,18 @@ using System;
 
 public class PlayerScipt : MonoBehaviour
 {
-    public float forwardSpeedUnitsPerSecond = 20f;
+    [SerializeField]
+    private float forwardSpeedUnitsPerSecond = 20f;
 
-    public float rotationSpeedDegreesPerSecond = 5;
+    private float VerticalInput;
 
-    public float VerticalInput;
-
-    public float HorizontalInput;
-
+    private float HorizontalInput;
 
     private Rigidbody playerRb;
 
-    public float rotationAngle;
+    private float rotationAngle;
 
-    public Quaternion JimFace;
+    private Quaternion JimFace;
 
     private Vector3 forwardDirection = new Vector3(0, 0, 1);
 
@@ -33,13 +31,6 @@ public class PlayerScipt : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //fortnite: player always faces forward.  Moves in direction of left joystick.  Jogs backwards if moved back.  Right joystick rotates character direction and camera.  Camera is always
-        // behind character
-
-        //batman arkham knight: left joystick left/right will rotate batman  and camera while moving.  I.e, pushing joystick 45 degrees up/left will make Batman walk around in a circle while
-        //camera stays pointed at his back.  Moving down will make Batman walk backwards.
-        //If standing still, right joystick moves camera around Batman while he stands still.
-        //If moving, right joystick horizontal moves Batman direction as well as camera direction.  Vertical moves camera.
         VerticalInput = Input.GetAxis("Vertical");
 
         HorizontalInput = Input.GetAxis("Horizontal");
