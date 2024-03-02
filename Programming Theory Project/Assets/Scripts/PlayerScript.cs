@@ -20,6 +20,19 @@ public class PlayerScipt : MonoBehaviour
 
     private Vector3 forwardDirection = new Vector3(0, 0, 1);
 
+    private float tolerance = 0.01f;
+
+    [SerializeField]
+    private float myDistance = 20;
+
+    [SerializeField]
+    private float angularSpeedMradPerSecond = 785f;
+
+    private float cameraAngle = 0;
+
+    [SerializeField]
+    private GameObject mainCamera;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -35,17 +48,59 @@ public class PlayerScipt : MonoBehaviour
 
         HorizontalInput = Input.GetAxis("Horizontal");
 
-        var movementDirection = new Vector3(HorizontalInput, 0, VerticalInput);
+        var CameraInput = Input.GetAxis("Right Stick Y");
 
-        var movementAngle = Vector3.Angle(forwardDirection, movementDirection);
+        //camera position
+        var angularTravel = angularSpeedMradPerSecond * Time.deltaTime / 1000;
 
-        playerRb.transform.position = playerRb.transform.position + movementDirection * forwardSpeedUnitsPerSecond * Time.deltaTime;
+        if (CameraInput > 0.01)
+        {
+            cameraAngle += angularTravel;
+        }
+        else if (CameraInput < -0.01)
+        {
+            cameraAngle -= angularTravel;
+        }
 
-        Vector3 relativePos = movementDirection - playerRb.transform.position;
+        var cameraVector = new Vector3(Mathf.Sin(cameraAngle), 0, -Mathf.Cos(cameraAngle)) * myDistance;
 
-        // the second argument, upwards, defaults to Vector3.up
-        Quaternion rotation = Quaternion.LookRotation(movementDirection, Vector3.up);
-        
-        playerRb.transform.rotation = rotation * JimFace;
+        mainCamera.transform.position = new Vector3(playerRb.transform.position.x + cameraVector.x, mainCamera.transform.position.y, playerRb.transform.position.z + cameraVector.z);
+
+        //player position
+        if (Mathf.Abs(VerticalInput) < tolerance)
+        {
+            VerticalInput = 0;
+        }
+
+        if (Mathf.Abs(HorizontalInput) < tolerance)
+        {
+            HorizontalInput = 0;
+        }
+
+        forwardDirection = -1 * Vector3.Normalize(cameraVector);
+
+        var joystickDirection = new Vector3(HorizontalInput, 0, VerticalInput);
+
+        if (joystickDirection != new Vector3(0, 0, 0))
+        {
+            Quaternion joystickRotation = new Quaternion();
+
+            joystickRotation.SetFromToRotation(new Vector3(0, 0, 1), joystickDirection);
+
+            var movementDirection = joystickRotation * forwardDirection;
+
+            playerRb.transform.position = playerRb.transform.position + movementDirection * forwardSpeedUnitsPerSecond * Time.deltaTime;
+
+            Vector3 relativePos = movementDirection - playerRb.transform.position;
+
+            // the second argument, upwards, defaults to Vector3.up
+            Quaternion rotation = Quaternion.LookRotation(movementDirection, Vector3.up);
+
+            playerRb.transform.rotation = rotation * JimFace;
+        }
+
+        //make sure camera always faces the player object
+        mainCamera.transform.LookAt(playerRb.transform, Vector3.up);
     }
 }
+    

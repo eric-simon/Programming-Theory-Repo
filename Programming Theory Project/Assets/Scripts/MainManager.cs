@@ -21,7 +21,14 @@ public class MainManager : MonoBehaviour
 
     public void LoseLife()
     {
+        StartCoroutine(LoseLifeCoroutine());
+    }
+
+    IEnumerator LoseLifeCoroutine()
+    {
         ScoreManager.Instance.LoseLife();
+
+        yield return new WaitForSeconds(5);
 
         if (ScoreManager.Instance.IsGameOver())
         {
