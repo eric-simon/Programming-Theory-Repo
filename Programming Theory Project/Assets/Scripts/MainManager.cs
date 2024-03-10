@@ -7,7 +7,19 @@ public class MainManager : MonoBehaviour
 {
     public static MainManager Instance;
 
-    public int Level = 1;
+    private int _level = 1;
+    public int Level
+    {
+        //ENCAPSULATION
+        get => _level;
+        set 
+        {
+            if (value > 0)
+            {
+                _level = value;
+            }
+        }
+    }
 
     private void Awake()
     {
@@ -26,6 +38,7 @@ public class MainManager : MonoBehaviour
         StartCoroutine(FinishGameCoroutine());
     }
 
+    //ABSTRACTION
     IEnumerator PauseGameCoroutine(int seconds)
     {
         Time.timeScale = 0;

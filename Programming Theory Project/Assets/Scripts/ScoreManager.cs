@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class ScoreManager : MonoBehaviour
 {
+    //ENCAPSULATION
     public static ScoreManager Instance { get; private set; }
     
     void Awake()
