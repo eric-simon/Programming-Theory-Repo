@@ -11,6 +11,6 @@ public class Finisher : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        //MainManager.Instance.FinishGame();
+        MainManager.Instance.FinishGame();
     }
 }

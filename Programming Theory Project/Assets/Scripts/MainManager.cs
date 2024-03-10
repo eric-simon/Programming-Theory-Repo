@@ -26,11 +26,11 @@ public class MainManager : MonoBehaviour
         StartCoroutine(FinishGameCoroutine());
     }
 
-    IEnumerator PauseGameCoroutine()
+    IEnumerator PauseGameCoroutine(int seconds)
     {
         Time.timeScale = 0;
 
-        float pauseEndTime = Time.realtimeSinceStartup + 5;
+        float pauseEndTime = Time.realtimeSinceStartup + seconds;
 
         while (Time.realtimeSinceStartup < pauseEndTime)
         {
@@ -44,7 +44,7 @@ public class MainManager : MonoBehaviour
     {
         Level++;
 
-        yield return PauseGameCoroutine();
+        yield return PauseGameCoroutine(1);
 
         LoadGameScene();
     }
@@ -58,7 +58,7 @@ public class MainManager : MonoBehaviour
     {
         ScoreManager.Instance.LoseLife();
 
-        yield return new WaitForSeconds(5);
+        yield return new WaitForSeconds(2);
 
         if (ScoreManager.Instance.IsGameOver())
         {
