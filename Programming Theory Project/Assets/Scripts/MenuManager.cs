@@ -16,6 +16,16 @@ public class MenuManager : MonoBehaviour
     {
     }
 
+    private void Update()
+    {
+        var start = Input.GetButton("Start");
+        
+        if (start)
+        {
+            StartNew();
+        }
+    }
+
     public void StartNew()
     {
         SceneManager.LoadScene(1, LoadSceneMode.Single);

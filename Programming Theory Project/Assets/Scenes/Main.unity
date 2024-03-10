@@ -97,7 +97,7 @@ LightmapSettings:
     m_ExportTrainingData: 0
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
-  m_LightingDataAsset: {fileID: 0}
+  m_LightingDataAsset: {fileID: 112000000, guid: 94959dcb6c2440046937891404e6c8ad, type: 2}
   m_LightingSettings: {fileID: 0}
 --- !u!196 &4
 NavMeshSettings:
@@ -418,6 +418,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5a1b119e01728ff45bbaf302880f32a4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Level: 1
 --- !u!4 &824420541
 Transform:
   m_ObjectHideFlags: 0
@@ -613,7 +614,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ffaf565a3050b947bbcce28388edea5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  forwardSpeedUnitsPerSecond: 20
+  forwardSpeedUnitsPerSecond: 7
   myDistance: 20
   angularSpeedMradPerSecond: 785
   mainCamera: {fileID: 1648811350}
@@ -647,6 +648,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawnPrefab: {fileID: 7100486609986193623, guid: c57d03523b1435a439d73d73ac2d2ccf, type: 3}
+  spawnFinisherPrefab: {fileID: 1652537571163712430, guid: d85f3f2bf95ee454ba9cd39ca6fd2fec, type: 3}
   startPos: {x: 0, y: 0, z: 0}
   margin: 10
 --- !u!4 &1494738346

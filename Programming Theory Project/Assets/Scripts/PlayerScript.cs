@@ -6,7 +6,7 @@ using System;
 public class PlayerScipt : MonoBehaviour
 {
     [SerializeField]
-    private float forwardSpeedUnitsPerSecond = 20f;
+    private float forwardSpeedUnitsPerSecond = 5f;
 
     private float VerticalInput;
 
@@ -48,7 +48,7 @@ public class PlayerScipt : MonoBehaviour
 
         HorizontalInput = Input.GetAxis("Horizontal");
 
-        var CameraInput = Input.GetAxis("Right Stick Y");
+        var CameraInput = Input.GetAxis("Mouse X");
 
         //camera position
         var angularTravel = angularSpeedMradPerSecond * Time.deltaTime / 1000;
@@ -62,7 +62,7 @@ public class PlayerScipt : MonoBehaviour
             cameraAngle -= angularTravel;
         }
 
-        var cameraVector = new Vector3(Mathf.Sin(cameraAngle), 0, -Mathf.Cos(cameraAngle)) * myDistance;
+        var cameraVector = new Vector3(-Mathf.Sin(cameraAngle), 0, -Mathf.Cos(cameraAngle)) * myDistance;
 
         mainCamera.transform.position = new Vector3(playerRb.transform.position.x + cameraVector.x, mainCamera.transform.position.y, playerRb.transform.position.z + cameraVector.z);
 

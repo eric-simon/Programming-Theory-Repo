@@ -7,6 +7,8 @@ public class MainManager : MonoBehaviour
 {
     public static MainManager Instance;
 
+    public int Level = 1;
+
     private void Awake()
     {
         if (Instance != null)
@@ -17,6 +19,34 @@ public class MainManager : MonoBehaviour
 
         Instance = this;
         DontDestroyOnLoad(gameObject);
+    }
+
+    public void FinishGame()
+    {
+        StartCoroutine(FinishGameCoroutine());
+    }
+
+    IEnumerator PauseGameCoroutine()
+    {
+        Time.timeScale = 0;
+
+        float pauseEndTime = Time.realtimeSinceStartup + 5;
+
+        while (Time.realtimeSinceStartup < pauseEndTime)
+        {
+            yield return 0;
+        }
+
+        Time.timeScale = 1;
+    }
+
+    IEnumerator FinishGameCoroutine()
+    {
+        Level++;
+
+        yield return PauseGameCoroutine();
+
+        LoadGameScene();
     }
 
     public void LoseLife()

@@ -102,8 +102,24 @@ InputManager:
     axis: 0
     joyNum: 0
   - serializedVersion: 3
-    m_Name: Right Stick Y
-    descriptiveName: 
+    m_Name: Mouse Y
+    descriptiveName: XBOX Controller RIght Stick Y-Axis
+    descriptiveNegativeName: 
+    negativeButton: 
+    positiveButton: 
+    altNegativeButton: 
+    altPositiveButton: 
+    gravity: 0
+    dead: 0
+    sensitivity: 0.1
+    snap: 0
+    invert: 1
+    type: 2
+    axis: 4
+    joyNum: 0
+  - serializedVersion: 3
+    m_Name: Mouse X
+    descriptiveName: XBOX Controller RIght Stick Y-Axis
     descriptiveNegativeName: 
     negativeButton: 
     positiveButton: 
@@ -115,22 +131,6 @@ InputManager:
     snap: 0
     invert: 0
     type: 2
-    axis: 2
-    joyNum: 0
-  - serializedVersion: 3
-    m_Name: Right Stick X
-    descriptiveName: 
-    descriptiveNegativeName: 
-    negativeButton: 
-    positiveButton: 
-    altNegativeButton: 
-    altPositiveButton: 
-    gravity: 0
-    dead: 0
-    sensitivity: 0.1
-    snap: 0
-    invert: 0
-    type: 1
     axis: 3
     joyNum: 0
   - serializedVersion: 3
@@ -246,13 +246,13 @@ InputManager:
     axis: 0
     joyNum: 0
   - serializedVersion: 3
-    m_Name: Submit
+    m_Name: Start
     descriptiveName: 
     descriptiveNegativeName: 
     negativeButton: 
-    positiveButton: return
+    positiveButton: joystick button 7
     altNegativeButton: 
-    altPositiveButton: joystick button 0
+    altPositiveButton: 7
     gravity: 1000
     dead: 0.001
     sensitivity: 1000
