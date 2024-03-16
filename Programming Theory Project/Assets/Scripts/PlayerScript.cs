@@ -102,5 +102,10 @@ public class PlayerScipt : MonoBehaviour
         //make sure camera always faces the player object
         mainCamera.transform.LookAt(playerRb.transform, Vector3.up);
     }
+    
+    private void OnTriggerEnter(Collider other)
+    {
+        GetComponent<AudioSource>().Play();
+    }
 }
     
