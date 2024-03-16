@@ -34,7 +34,7 @@ public class SpawnManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        SpawnLevel(startPos, 10, MainManager.Instance.Level);
+        SpawnLevel(startPos, MainManager.Instance.Level + 5, MainManager.Instance.Level);
 
         Time.timeScale = 1 + MainManager.Instance.Level / 10f;
     }
@@ -51,6 +51,10 @@ public class SpawnManager : MonoBehaviour
         foreach (var i in Enumerable.Range(0, boxes))
         {
             var box = Instantiate(spawnPrefab, spawnPos, spawnPrefab.transform.rotation);
+
+            var script = box.GetComponent<BoxMover>();
+
+            script.Motion = BoxMotionFactory.SpawnBoxMotion(level, i);
 
             box.transform.GetChild(0).GetComponent<Renderer>().material.color = boxColors[level % boxColors.Count];
 
